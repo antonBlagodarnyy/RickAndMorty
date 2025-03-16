@@ -1,0 +1,14 @@
+<div>
+
+    <p><span class="tag">Air date: </span>{{air_date()}}</p>
+    <p><span class="tag">Episode: </span>{{episode()}}</p>
+    <p><span class="tag">Characters: </span> </p>
+       <ul>
+            @for (character of characters(); track character) {
+                <li><a (click)="refreshCharacter(character.id)">{{character.name}}</a></li>
+            }
+       </ul> 
+       <p><span class="tag">Url: </span>{{url()}}</p>
+       <p><span class="tag">Created: </span>{{created()}}</p>
+    
+</div>

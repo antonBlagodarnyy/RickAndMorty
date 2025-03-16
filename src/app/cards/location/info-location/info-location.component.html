@@ -1,0 +1,14 @@
+<div>
+  <p><span class="tag">Type: </span>{{ type() }}</p>
+  <p><span class="tag">Dimension: </span>{{ dimension() }}</p>
+  <p><span class="tag">Residents: </span></p>
+  <ul>
+    @for (resident of residents(); track resident) {
+    <li>
+      <a (click)="refreshCharacter(resident.id)">{{ resident.name }}</a>
+    </li>
+    }
+  </ul>
+  <p><span class="tag">url: </span>{{ url() }}</p>
+  <p><span class="tag">Created: </span>{{ created() }}</p>
+</div>
