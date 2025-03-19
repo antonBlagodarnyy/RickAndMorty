@@ -1,6 +1,6 @@
 import { Component, input, OnInit } from '@angular/core';
-import { EpisodeService } from '../../episode/episode.service';
-import { LocationService } from '../../location/location.service';
+import { EpisodeService } from '../../../services/episode.service';
+import { LocationService } from '../../../services/location.service';
 @Component({
   selector: 'app-info-character',
   imports: [],

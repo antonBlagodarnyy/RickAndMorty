@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Episode } from '../models/episode-model';
-import { EpisodeService } from './episode.service';
+import { EpisodeService } from '../../services/episode.service';
 import { CardHeaderComponent } from '../card-header/card-header.component';
 import { InfoEpisodeComponent } from './info-episode/info-episode.component';
-import { CharacterService } from '../character/character.service';
+import { CharacterService } from '../../services/character.service';
 
 @Component({
   selector: 'app-episode',

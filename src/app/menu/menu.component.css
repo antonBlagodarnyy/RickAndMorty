@@ -1,0 +1,15 @@
+a:visited{
+    text-decoration: none;
+}
+a{
+    font-size: larger;
+    text-decoration: none;
+}
+li{
+    margin:5vh;
+}
+@media(max-width:1000px){
+    ul{
+        display: flex;
+    }
+}

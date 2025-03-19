@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { LocationService } from './location.service';
+import { LocationService } from '../../services/location.service';
 import { Location } from '../models/location-model';
 import { CardHeaderComponent } from '../card-header/card-header.component';
 import { InfoLocationComponent } from './info-location/info-location.component';
-import { CharacterService } from '../character/character.service';
+import { CharacterService } from '../../services/character.service';
 @Component({
   selector: 'app-location',
   imports: [CardHeaderComponent, InfoLocationComponent],

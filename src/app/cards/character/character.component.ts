@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 
-import { CharacterService } from './character.service';
+import { CharacterService } from '../../services/character.service';
 import { Character } from '../models/character-model';
 import { CardHeaderComponent } from '../card-header/card-header.component';
 import { InfoCharacterComponent } from './info-character/info-character.component';

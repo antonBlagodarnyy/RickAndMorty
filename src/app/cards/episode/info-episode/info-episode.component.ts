@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { CharacterService } from '../../character/character.service';
+import { CharacterService } from '../../../services/character.service';
 
 @Component({
   selector: 'app-info-episode',
