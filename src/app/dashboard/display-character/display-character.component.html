@@ -1,7 +1,9 @@
 <div class="container">
-  @for (character of characters | paginate: {itemsPerPage:20,currentPage:currentPage,totalItems:826}; track character) {
-  <app-character [character]="character"></app-character>
-  }
- 
+  <div class="cards">
+    @for (character of characters | paginate:
+    {itemsPerPage:20,currentPage:currentPage,totalItems:826}; track character) {
+    <app-character [character]="character"></app-character>
+    }
+  </div>
+  <pagination-controls (pageChange)="changePage($event)"></pagination-controls>
 </div>
-<pagination-controls (pageChange)="changePage($event)"></pagination-controls>
