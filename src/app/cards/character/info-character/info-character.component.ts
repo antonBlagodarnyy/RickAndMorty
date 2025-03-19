@@ -12,12 +12,12 @@ export class InfoCharacterComponent {
   species = input();
   type = input();
   gender = input();
-  origin = input<{ name: string; url: string; id: number }>({
+  origin = input<{ name: string; url: string; id: number } | undefined>({
     name: 'undefined',
     url: 'undefined',
     id: 0,
   });
-  location = input<{ name: string; url: string; id: number }>({
+  location = input<{ name: string; url: string; id: number }| undefined>({
     name: 'undefined',
     url: 'undefined',
     id: 0,

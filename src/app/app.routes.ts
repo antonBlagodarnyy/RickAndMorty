@@ -3,10 +3,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CharacterComponent } from './cards/character/character.component';
 import { EpisodeComponent } from './cards/episode/episode.component';
 import { LocationComponent } from './cards/location/location.component';
+import { DisplayCharacterComponent } from './dashboard/display-character/display-character.component';
+import { DisplayEpisodeComponent } from './dashboard/display-episode/display-episode.component';
+import { DisplayLocationComponent } from './dashboard/display-location/display-location.component';
 
 export const routes: Routes = [
   { path: '', component: DashboardComponent },
-  { path: 'characters', component: CharacterComponent },
-  { path: 'episodes', component: EpisodeComponent },
-  { path: 'locations', component: LocationComponent },
+  { path: 'characters', component: DisplayCharacterComponent },
+  { path: 'episodes', component: DisplayEpisodeComponent },
+  { path: 'locations', component: DisplayLocationComponent },
 ];

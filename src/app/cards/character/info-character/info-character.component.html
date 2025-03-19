@@ -4,10 +4,11 @@
   <p><span class="tag">Type: </span>{{ type() }}</p>
   <p><span class="tag">Gender: </span>{{ gender() }}</p>
   <p>
-    <span class="tag">Origin: </span><a (click)="refreshLocation(origin().id)">{{ origin().name }}</a>
+    <!--TODO implement show data on hover-->
+    <span class="tag">Origin: </span><a >{{ origin()?.name }}</a>
   </p>
   <p>
-    <span class="tag">Location: </span><a (click)="refreshLocation(location().id)">{{ location().name }}</a>
+    <span class="tag">Location: </span><a >{{ location()?.name }}</a>
   </p>
   <p><span class="tag">Episodes: </span></p>
   <ul>

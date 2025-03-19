@@ -2,19 +2,19 @@
 
   <app-card-header
     [type]="type"
-    [id]="character.id"
-    [name]="character.name"
+    [id]="character()?.id"
+    [name]="character()?.name"
   ></app-card-header>
-  <img src="{{ character.image }}" />
+  <img src="{{ character()?.image }}" />
   <app-info-character
-    [status]="character.status"
-    [species]="character.species"
-    [type]="character.type"
-    [gender]="character.gender"
-    [origin]="character.origin"
-    [location]="character.location"
-    [episodes]="character.episodes"
-    [url]="character.url"
-    [created]="character.created"
+    [status]="character()?.status"
+    [species]="character()?.species"
+    [type]="character()?.type"
+    [gender]="character()?.gender"
+    [origin]="character()?.origin"
+    [location]="character()?.location"
+    [episodes]="character()?.episodes"
+    [url]="character()?.url"
+    [created]="character()?.created"
   ></app-info-character>
 </div>

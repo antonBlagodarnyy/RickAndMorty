@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { BehaviorSubject, map } from 'rxjs';
+import { Character } from '../cards/models/character-model';
 
 @Injectable({ providedIn: 'root' })
 export class CharacterService {
@@ -9,7 +10,11 @@ export class CharacterService {
   getId = this.id.asObservable();
 
   constructor(private http: HttpClient) {}
-
+  fetchCharacters(page: string) {
+    return this.http.get<{ results: Character[] }>(
+      'https://rickandmortyapi.com/api/character/' + page
+    );
+  }
   fetchCharacter(id: number) {
     return this.http.get<{
       id: number;

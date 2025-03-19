@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, input, OnInit } from '@angular/core';
 
 import { CharacterService } from '../../services/character.service';
 import { Character } from '../models/character-model';
@@ -14,12 +14,12 @@ import { InfoCharacterComponent } from './info-character/info-character.componen
 })
 export class CharacterComponent implements OnInit {
   type = 'Character';
-  character!: Character;
+  character= input<Character>();
 
   constructor(private characterService: CharacterService) {}
 
   ngOnInit(): void {
-    this.characterService.getId.subscribe((id) => {
+    /* this.characterService.getId.subscribe((id) => {
       this.characterService.fetchCharacter(id).subscribe((characterData) => {
         let origin = {
           name: characterData.origin.name,
@@ -55,6 +55,6 @@ export class CharacterComponent implements OnInit {
           created: characterData.created,
         };
       });
-    });
+    }); */
   }
 }
