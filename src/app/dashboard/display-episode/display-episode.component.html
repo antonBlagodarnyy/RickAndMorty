@@ -1,1 +1,10 @@
-<p>display-episode works!</p>
+<div class="container">
+    <div class="cards">
+      @for (episode of episodes | paginate:
+      {itemsPerPage:20,currentPage:currentPage,totalItems:51}; track episode) {
+      <app-episode [episode]="episode"></app-episode>
+      }
+    </div>
+    <pagination-controls (pageChange)="changePage($event)"></pagination-controls>
+  </div>
+  

@@ -1,0 +1,15 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+}
+app-episode{
+    margin: 5vh;
+}
+.my-pagination ::ng-deep .ngx-pagination .current {
+    background: red;
+  }

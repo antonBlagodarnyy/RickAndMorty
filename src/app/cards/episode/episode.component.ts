@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, input, OnInit } from '@angular/core';
 import { Episode } from '../models/episode-model';
 import { EpisodeService } from '../../services/episode.service';
 import { CardHeaderComponent } from '../card-header/card-header.component';
@@ -13,7 +13,7 @@ import { CharacterService } from '../../services/character.service';
 })
 export class EpisodeComponent implements OnInit {
   type = 'Episode';
-  episode!: Episode;
+  episode = input<Episode>();
   characters: { name: string; id: number }[] = [];
 
   constructor(
@@ -22,7 +22,7 @@ export class EpisodeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.episodeService.getId.subscribe((id) => {
+   /*  this.episodeService.getId.subscribe((id) => {
       this.episodeService.fetchEpisode(id).subscribe((episodeData) => {
         this.episode = {
           id: episodeData.id,
@@ -42,6 +42,6 @@ export class EpisodeComponent implements OnInit {
             });
         });
       });
-    });
+    }); */
   }
 }

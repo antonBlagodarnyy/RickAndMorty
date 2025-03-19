@@ -40,7 +40,5 @@ export class CharacterService {
   setId(id: number) {
     this.id.next(id);
   }
-  getIdFromUrl(url: string): string {
-    return url.split('/').pop() || '';
-  }
+ 
 }
