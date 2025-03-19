@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
+import { Episode } from '../cards/models/episode-model';
 
 @Injectable({ providedIn: 'root' })
 export class EpisodeService {
@@ -8,6 +9,12 @@ export class EpisodeService {
   getId = this.id.asObservable();
 
   constructor(private http: HttpClient) {}
+
+  fetchEpisodes(page: string) {
+    return this.http.get<{ results: Episode[] }>(
+      'https://rickandmortyapi.com/api/episode/' + page
+    );
+  }
 
   fetchEpisode(id: number) {
     return this.http.get<{
