@@ -62,7 +62,7 @@ export class DisplayEpisodeComponent implements OnInit {
     this.episodes = [];
     this.currentPage = event;
     this.page = '?page=' + this.currentPage;
-    console.log(this.page);
+ 
     this.getEpisodes(this.page);
   }
 }

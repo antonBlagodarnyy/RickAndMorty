@@ -9,6 +9,20 @@ export class LocationService {
 
   constructor(private http: HttpClient) {}
 
+  fetchLocations(page: string) {
+    return this.http.get<{
+      results: {
+        id: number;
+        name: string;
+        type: string;
+        dimension: string;
+        residents: string[];
+        url: string;
+        created: string;
+      }[];
+    }>('https://rickandmortyapi.com/api/location/' + page);
+  }
+
   getLocation(id: number) {
     return this.http.get<{
       id: number;

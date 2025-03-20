@@ -1,8 +1,5 @@
 import { Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { CharacterComponent } from './cards/character/character.component';
-import { EpisodeComponent } from './cards/episode/episode.component';
-import { LocationComponent } from './cards/location/location.component';
 import { DisplayCharacterComponent } from './dashboard/display-character/display-character.component';
 import { DisplayEpisodeComponent } from './dashboard/display-episode/display-episode.component';
 import { DisplayLocationComponent } from './dashboard/display-location/display-location.component';

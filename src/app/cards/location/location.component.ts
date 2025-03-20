@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, input, OnInit } from '@angular/core';
 import { LocationService } from '../../services/location.service';
 import { Location } from '../models/location-model';
 import { CardHeaderComponent } from '../card-header/card-header.component';
@@ -13,8 +13,8 @@ import { FunctionalitiesService } from '../../services/functionalities.service';
 })
 export class LocationComponent implements OnInit {
   type = 'Location';
-  location!: Location;
-  residents: { name: string; id: number }[] = [];
+  location = input<Location>();
+
 
   constructor(
     private locationService: LocationService,
@@ -23,7 +23,7 @@ export class LocationComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.locationService.getId.subscribe((id) => {
+   /*  this.locationService.getId.subscribe((id) => {
       this.locationService.getLocation(id).subscribe((locationData) => {
         this.location = {
           id: locationData.id,
@@ -44,6 +44,6 @@ export class LocationComponent implements OnInit {
             });
         });
       });
-    });
+    }); */
   }
 }
