@@ -1,5 +1,5 @@
 <div class="container">
-  <app-searchbar (searchedTerm)="filterCharacters()"></app-searchbar>
+  <app-searchbar (searchedTerm)="filterCharacters($event)"></app-searchbar>
   <div class="cards">
     @for (character of characters | paginate:
     {itemsPerPage:20,currentPage:currentPage,totalItems:826}; track character) {

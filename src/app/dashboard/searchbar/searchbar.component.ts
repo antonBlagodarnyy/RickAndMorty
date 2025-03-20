@@ -7,15 +7,15 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrl: './searchbar.component.css'
 })
 export class SearchbarComponent {
-@Output() searchedTerm = new EventEmitter<RegExp>();
+@Output() searchedTerm = new EventEmitter<string>();
 
 
-  sendTerm(value: RegExp){
+  sendTerm(value: string){
     this.searchedTerm.emit(value);
   }
-  createRegAndSend(event: Event){
+  getTerm(event: Event){
     const inputValue= (event.target as HTMLInputElement).value;
-    const regex = new RegExp(inputValue, 'i');
-    this.sendTerm(regex)
+
+    this.sendTerm(inputValue)
   }
 }

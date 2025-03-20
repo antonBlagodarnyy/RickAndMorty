@@ -19,12 +19,15 @@ export class DisplayCharacterComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.characterService.fetchCharacters(this.page).subscribe((Characters) => {
+  this.getCharacters(this.page);
+    
+  }
+  getCharacters(page:string){
+    this.characterService.fetchCharacters(page).subscribe((Characters) => {
       Characters.results.forEach((character) => {
         this.characters.push(character);
       });
     });
-    
   }
   changePage(event: number){
     this.characters=[];
@@ -36,5 +39,8 @@ export class DisplayCharacterComponent implements OnInit {
         this.characters.push(character);
       });
     });
+  }
+  filterCharacters(name:string){
+    
   }
 }
