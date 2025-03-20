@@ -2,11 +2,12 @@ import { Component, input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { CharacterComponent } from '../../cards/character/character.component';
 import { CharacterService } from '../../services/character.service';
 import { Character } from '../../cards/models/character-model';
-import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
+import { NgxPaginationModule } from 'ngx-pagination';
+import { SearchbarComponent } from "../searchbar/searchbar.component"; // <-- import the module
 
 @Component({
   selector: 'app-display-character',
-  imports: [CharacterComponent, NgxPaginationModule],
+  imports: [CharacterComponent, NgxPaginationModule, SearchbarComponent],
   templateUrl: './display-character.component.html',
   styleUrl: './display-character.component.css',
 })
