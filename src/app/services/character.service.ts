@@ -15,6 +15,14 @@ export class CharacterService {
       'https://rickandmortyapi.com/api/character/' + page
     );
   }
+
+  fetchCharactersFiltered( name: string) {
+    console.log("fetching")
+    return this.http.get<{ results: Character[] }>(
+      'https://rickandmortyapi.com/api/character/' +name
+    );
+  }
+
   fetchCharacter(id: number) {
     return this.http.get<{
       id: number;
@@ -40,5 +48,4 @@ export class CharacterService {
   setId(id: number) {
     this.id.next(id);
   }
- 
 }

@@ -1,9 +1,15 @@
-import { Component, input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { CharacterComponent } from '../../cards/character/character.component';
 import { CharacterService } from '../../services/character.service';
 import { Character } from '../../cards/models/character-model';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { SearchbarComponent } from "../searchbar/searchbar.component"; // <-- import the module
+import { SearchbarComponent } from '../searchbar/searchbar.component'; // <-- import the module
 
 @Component({
   selector: 'app-display-character',
@@ -17,21 +23,19 @@ export class DisplayCharacterComponent implements OnInit {
   page: string = '?page=' + this.currentPage;
   constructor(private characterService: CharacterService) {}
 
-
   ngOnInit(): void {
-  this.getCharacters(this.page);
-    
+    this.getCharacters(this.page);
   }
-  getCharacters(page:string){
+  getCharacters(page: string) {
     this.characterService.fetchCharacters(page).subscribe((Characters) => {
       Characters.results.forEach((character) => {
         this.characters.push(character);
       });
     });
   }
-  changePage(event: number){
-    this.characters=[];
-    this.currentPage= event;
+  changePage(event: number) {
+    this.characters = [];
+    this.currentPage = event;
     this.page = '?page=' + this.currentPage;
     console.log(this.page);
     this.characterService.fetchCharacters(this.page).subscribe((Characters) => {
@@ -40,7 +44,13 @@ export class DisplayCharacterComponent implements OnInit {
       });
     });
   }
-  filterCharacters(name:string){
-    
+  filterCharacters(name: string) {
+    console.log(name);
+    this.characters = [];
+    this.characterService.fetchCharactersFiltered('?name='+name).subscribe((Characters) => {
+      Characters.results.forEach((character) => {
+        this.characters.push(character);
+      });
+    });
   }
 }
