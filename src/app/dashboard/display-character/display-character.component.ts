@@ -38,12 +38,12 @@ export class DisplayCharacterComponent implements OnInit {
     this.characters = [];
     this.currentPage = event;
     this.page = '?page=' + this.currentPage;
-    console.log(this.page);
     this.characterService.fetchCharacters(this.page).subscribe((Characters) => {
       Characters.results.forEach((character) => {
         this.characters.push(character);
       });
     });
+    
   }
   filterCharacters(name: string) {
     this.characters = [];

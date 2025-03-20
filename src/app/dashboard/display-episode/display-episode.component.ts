@@ -57,7 +57,7 @@ export class DisplayEpisodeComponent implements OnInit {
     });
   }
 
-  //TODO implement the routing through the url
+
   changePage(event: number) {
     this.episodes = [];
     this.currentPage = event;
