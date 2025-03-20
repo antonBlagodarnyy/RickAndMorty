@@ -14,7 +14,7 @@ import { CharacterService } from '../../services/character.service';
 export class EpisodeComponent implements OnInit {
   type = 'Episode';
   episode = input<Episode>();
-  characters: { name: string; id: number }[] = [];
+
 
   constructor(
     private episodeService: EpisodeService,

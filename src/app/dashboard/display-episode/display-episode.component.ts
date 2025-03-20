@@ -23,11 +23,15 @@ export class DisplayEpisodeComponent implements OnInit {
     private characterService: CharacterService
   ) {}
 
-  //TODO Cast the characters in to the episodes. change the type of value that is returned by the fetch
   ngOnInit() {
-    this.episodeService.fetchEpisodes(this.page).subscribe((Episodes) => {
+    this.getEpisodes(this.page);
+  }
+
+  getEpisodes(page: string) {
+    this.episodeService.fetchEpisodes(page).subscribe((Episodes) => {
+
       Episodes.results.forEach((episode) => {
-        let characters = [];
+        let characters: { id: number; name: string }[] = [];
 
         episode.characters.map((characterUrl) => {
           let characterId = parseInt(
@@ -36,23 +40,29 @@ export class DisplayEpisodeComponent implements OnInit {
           this.characterService
             .fetchCharacterName(characterId)
             .subscribe((characterName) => {
-             characters.push({id:characterId, name:characterName})
+              characters.push({ id: characterId, name: characterName });
             });
         });
-        episode.characters = characters;
-        this.episodes.push(episode);
+
+        this.episodes.push({
+          id: episode.id,
+          name: episode.name,
+          air_date: episode.air_date,
+          episode: episode.episode,
+          characters: characters,
+          url: episode.url,
+          created: episode.created,
+        });
       });
     });
   }
+
+  //TODO implement the routing through the url
   changePage(event: number) {
     this.episodes = [];
     this.currentPage = event;
     this.page = '?page=' + this.currentPage;
     console.log(this.page);
-    this.episodeService.fetchEpisodes(this.page).subscribe((Episodes) => {
-      Episodes.results.forEach((episode) => {
-        this.episodes.push(episode);
-      });
-    });
+    this.getEpisodes(this.page);
   }
 }

@@ -11,9 +11,17 @@ export class EpisodeService {
   constructor(private http: HttpClient) {}
 
   fetchEpisodes(page: string) {
-    return this.http.get<{ results: Episode[] }>(
-      'https://rickandmortyapi.com/api/episode/' + page
-    );
+    return this.http.get<{
+      results: {
+        id: number;
+        name: string;
+        air_date: string;
+        episode: string;
+        characters: string[];
+        url: string;
+        created: string;
+      }[];
+    }>('https://rickandmortyapi.com/api/episode/' + page);
   }
 
   fetchEpisode(id: number) {

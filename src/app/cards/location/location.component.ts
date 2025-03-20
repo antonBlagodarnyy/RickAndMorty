@@ -4,6 +4,7 @@ import { Location } from '../models/location-model';
 import { CardHeaderComponent } from '../card-header/card-header.component';
 import { InfoLocationComponent } from './info-location/info-location.component';
 import { CharacterService } from '../../services/character.service';
+import { FunctionalitiesService } from '../../services/functionalities.service';
 @Component({
   selector: 'app-location',
   imports: [CardHeaderComponent, InfoLocationComponent],
@@ -17,7 +18,8 @@ export class LocationComponent implements OnInit {
 
   constructor(
     private locationService: LocationService,
-    private characterService: CharacterService
+    private characterService: CharacterService,
+    private functionalitiesService: FunctionalitiesService
   ) {}
 
   ngOnInit(): void {
@@ -34,7 +36,7 @@ export class LocationComponent implements OnInit {
 
         this.residents = [];
         locationData.residents.forEach((residenteUrl) => {
-          let id = parseInt(this.characterService.getIdFromUrl(residenteUrl));
+          let id = parseInt(this.functionalitiesService.getIdFromUrl(residenteUrl));
           this.characterService
             .fetchCharacterName(id)
             .subscribe((residentName) => {
