@@ -1,4 +1,8 @@
 <div class="container">
+  <div class="search">
+    <input type="text" />
+  </div>
+
   <div class="cards">
     @for (character of characters | paginate:
     {itemsPerPage:20,currentPage:currentPage,totalItems:826}; track character) {
