@@ -2,7 +2,7 @@
   <app-searchbar (searchedTerm)="filterCharacters($event)"></app-searchbar>
   <div class="cards">
     @for (character of characters | paginate:
-    {itemsPerPage:20,currentPage:currentPage,totalItems:826}; track character) {
+    {itemsPerPage:20,currentPage:currentPage,totalItems:totalItems}; track character) {
     <app-character [character]="character"></app-character>
     }
   </div>

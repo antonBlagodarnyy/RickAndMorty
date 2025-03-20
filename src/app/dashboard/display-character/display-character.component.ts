@@ -19,6 +19,7 @@ import { SearchbarComponent } from '../searchbar/searchbar.component'; // <-- im
 })
 export class DisplayCharacterComponent implements OnInit {
   characters: Character[] = [];
+  totalItems = 826;
   currentPage = 1;
   page: string = '?page=' + this.currentPage;
   constructor(private characterService: CharacterService) {}
@@ -45,12 +46,12 @@ export class DisplayCharacterComponent implements OnInit {
     });
   }
   filterCharacters(name: string) {
-    console.log(name);
     this.characters = [];
-    this.characterService.fetchCharactersFiltered('?name='+name).subscribe((Characters) => {
+    this.characterService.fetchCharactersFiltered(name).subscribe((Characters) => {
       Characters.results.forEach((character) => {
         this.characters.push(character);
       });
     });
+    this.totalItems = this.characters.length;
   }
 }

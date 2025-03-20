@@ -17,9 +17,8 @@ export class CharacterService {
   }
 
   fetchCharactersFiltered( name: string) {
-    console.log("fetching")
     return this.http.get<{ results: Character[] }>(
-      'https://rickandmortyapi.com/api/character/' +name
+      'https://rickandmortyapi.com/api/character/?name=' +name
     );
   }
 
