@@ -79,12 +79,29 @@ export class DisplayEpisodeComponent implements OnInit {
   changePage(event: number) {
     this.episodes = [];
     this.currentPage = event;
-    this.getEpisodes(this.currentPage);
+    if (!this.filter) {
+      this.getEpisodes(this.currentPage);
+    } else {
+      this.episodeService
+        .fetchEpisodesFiltered(this.currentPage, this.filterString)
+        .subscribe((Episodes) => {
+          this.totalItems = Episodes.info.count;
+          this.episodes = this.mapCharacters(Episodes.results);
+        });
+    }
   }
 
   filterEpisodes(name: string) {
     if (name == '') this.filter = false;
     else this.filter = true;
     this.filterString = name;
+
+    this.episodes = [];
+    this.episodeService
+      .fetchEpisodesFiltered(this.currentPage, this.filterString)
+      .subscribe((Episodes) => {
+        this.totalItems = Episodes.info.count;
+        this.episodes = this.mapCharacters(Episodes.results);
+      });
   }
 }

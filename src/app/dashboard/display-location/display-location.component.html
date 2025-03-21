@@ -1,8 +1,9 @@
 
 <div class="container">
+  <app-searchbar (searchedTerm)="filterLocation($event)"></app-searchbar>
     <div class="cards">
       @for (location of locations | paginate:
-      {itemsPerPage:20,currentPage:currentPage,totalItems:126}; track location) {
+      {itemsPerPage:20,currentPage:currentPage,totalItems:totalItems}; track location) {
       <app-location [location]="location"></app-location>
       }
     </div>

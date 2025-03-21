@@ -34,7 +34,7 @@ export class EpisodeService {
         characters: string[];
         url: string;
         created: string;
-      };
+      }[];
       info: { count: number };
     }>(
       'https://rickandmortyapi.com/api/episode/?page=' +

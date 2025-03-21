@@ -9,7 +9,7 @@ export class LocationService {
 
   constructor(private http: HttpClient) {}
 
-  fetchLocations(page: string) {
+  fetchLocations(page: number) {
     return this.http.get<{
       results: {
         id: number;
@@ -20,7 +20,25 @@ export class LocationService {
         url: string;
         created: string;
       }[];
-    }>('https://rickandmortyapi.com/api/location/' + page);
+    }>('https://rickandmortyapi.com/api/location/?page=' + page);
+  }
+
+  fetchLocationsFiltered(page: number, name: string) {
+    return this.http.get<{
+      results: {
+        id: number;
+        name: string;
+        type: string;
+        dimension: string;
+        residents: string[];
+        url: string;
+        created: string;
+      }[];
+      info: { count: number };
+    }>('https://rickandmortyapi.com/api/location/?page=' +
+        page +
+        '&name=' +
+        name)
   }
 
   getLocation(id: number) {
