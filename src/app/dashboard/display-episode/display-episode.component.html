@@ -1,4 +1,5 @@
 <div class="container">
+  <app-searchbar (searchedTerm)="filterEpisodes($event)"></app-searchbar>
     <div class="cards">
       @for (episode of episodes | paginate:
       {itemsPerPage:20,currentPage:currentPage,totalItems:51}; track episode) {

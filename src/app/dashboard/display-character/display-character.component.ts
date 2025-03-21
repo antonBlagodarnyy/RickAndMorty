@@ -19,15 +19,17 @@ import { SearchbarComponent } from '../searchbar/searchbar.component'; // <-- im
 })
 export class DisplayCharacterComponent implements OnInit {
   characters: Character[] = [];
+  filter = false;
+  filterString = '';
   totalItems = 826;
   currentPage = 1;
-  page: string = '?page=' + this.currentPage;
+
   constructor(private characterService: CharacterService) {}
 
   ngOnInit(): void {
-    this.getCharacters(this.page);
+    this.getCharacters(this.currentPage);
   }
-  getCharacters(page: string) {
+  getCharacters(page: number) {
     this.characterService.fetchCharacters(page).subscribe((Characters) => {
       Characters.results.forEach((character) => {
         this.characters.push(character);
@@ -35,23 +37,41 @@ export class DisplayCharacterComponent implements OnInit {
     });
   }
   changePage(event: number) {
-    this.characters = [];
     this.currentPage = event;
-    this.page = '?page=' + this.currentPage;
-    this.characterService.fetchCharacters(this.page).subscribe((Characters) => {
+    this.characters = [];
+
+    if(!this.filter){
+      console.log("not filtering");
+        this.characterService.fetchCharacters(this.currentPage).subscribe((Characters) => {
       Characters.results.forEach((character) => {
         this.characters.push(character);
       });
     });
-    
+    } else {
+      this.characterService
+      .fetchCharactersFiltered(this.currentPage, this.filterString)
+      .subscribe((Characters) => {
+        this.totalItems = Characters.info.count;
+        Characters.results.forEach((character) => {
+          this.characters.push(character);
+        });
+      });
+    }
+  
   }
   filterCharacters(name: string) {
+    if (name == '') this.filter = false;
+    else this.filter = true;
+    this.filterString = name;
+
     this.characters = [];
-    this.characterService.fetchCharactersFiltered(name).subscribe((Characters) => {
-      Characters.results.forEach((character) => {
-        this.characters.push(character);
+    this.characterService
+      .fetchCharactersFiltered(this.currentPage, name)
+      .subscribe((Characters) => {
+        this.totalItems = Characters.info.count;
+        Characters.results.forEach((character) => {
+          this.characters.push(character);
+        });
       });
-    });
-    this.totalItems = this.characters.length;
   }
 }

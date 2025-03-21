@@ -10,15 +10,18 @@ export class CharacterService {
   getId = this.id.asObservable();
 
   constructor(private http: HttpClient) {}
-  fetchCharacters(page: string) {
+  fetchCharacters(page: number) {
     return this.http.get<{ results: Character[] }>(
-      'https://rickandmortyapi.com/api/character/' + page
+      'https://rickandmortyapi.com/api/character/?page=' + page
     );
   }
 
-  fetchCharactersFiltered( name: string) {
-    return this.http.get<{ results: Character[] }>(
-      'https://rickandmortyapi.com/api/character/?name=' +name
+  fetchCharactersFiltered(page: number, name: string) {
+    return this.http.get<{ results: Character[]; info: { count: number } }>(
+      'https://rickandmortyapi.com/api/character/?page=' +
+        page +
+        '&name=' +
+        name
     );
   }
 

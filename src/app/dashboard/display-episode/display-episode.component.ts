@@ -5,14 +5,16 @@ import { EpisodeComponent } from '../../cards/episode/episode.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { FunctionalitiesService } from '../../services/functionalities.service';
 import { CharacterService } from '../../services/character.service';
+import { SearchbarComponent } from "../searchbar/searchbar.component";
 
 @Component({
   selector: 'app-display-episode',
-  imports: [EpisodeComponent, NgxPaginationModule],
+  imports: [EpisodeComponent, NgxPaginationModule, SearchbarComponent],
   templateUrl: './display-episode.component.html',
   styleUrl: './display-episode.component.css',
 })
 export class DisplayEpisodeComponent implements OnInit {
+
   episodes: Episode[] = [];
   currentPage = 1;
   page: string = '?page=' + this.currentPage;
@@ -65,4 +67,8 @@ export class DisplayEpisodeComponent implements OnInit {
  
     this.getEpisodes(this.page);
   }
+
+  filterEpisodes($event: string) {
+    throw new Error('Method not implemented.');
+    }
 }
