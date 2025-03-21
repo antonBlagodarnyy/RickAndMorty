@@ -2,7 +2,7 @@
   <app-searchbar (searchedTerm)="filterEpisodes($event)"></app-searchbar>
     <div class="cards">
       @for (episode of episodes | paginate:
-      {itemsPerPage:20,currentPage:currentPage,totalItems:51}; track episode) {
+      {itemsPerPage:20,currentPage:currentPage,totalItems:totalItems}; track episode) {
       <app-episode [episode]="episode"></app-episode>
       }
     </div>

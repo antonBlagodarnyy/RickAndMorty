@@ -9,7 +9,7 @@ import { CharacterComponent } from '../../cards/character/character.component';
 import { CharacterService } from '../../services/character.service';
 import { Character } from '../../cards/models/character-model';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { SearchbarComponent } from '../searchbar/searchbar.component'; // <-- import the module
+import { SearchbarComponent } from '../searchbar/searchbar.component'; 
 
 @Component({
   selector: 'app-display-character',
@@ -18,6 +18,7 @@ import { SearchbarComponent } from '../searchbar/searchbar.component'; // <-- im
   styleUrl: './display-character.component.css',
 })
 export class DisplayCharacterComponent implements OnInit {
+
   characters: Character[] = [];
   filter = false;
   filterString = '';
@@ -40,24 +41,18 @@ export class DisplayCharacterComponent implements OnInit {
     this.currentPage = event;
     this.characters = [];
 
-    if(!this.filter){
-      console.log("not filtering");
-        this.characterService.fetchCharacters(this.currentPage).subscribe((Characters) => {
-      Characters.results.forEach((character) => {
-        this.characters.push(character);
-      });
-    });
+    if (!this.filter) {
+      this.getCharacters(this.currentPage);
     } else {
       this.characterService
-      .fetchCharactersFiltered(this.currentPage, this.filterString)
-      .subscribe((Characters) => {
-        this.totalItems = Characters.info.count;
-        Characters.results.forEach((character) => {
-          this.characters.push(character);
+        .fetchCharactersFiltered(this.currentPage, this.filterString)
+        .subscribe((Characters) => {
+          this.totalItems = Characters.info.count;
+          Characters.results.forEach((character) => {
+            this.characters.push(character);
+          });
         });
-      });
     }
-  
   }
   filterCharacters(name: string) {
     if (name == '') this.filter = false;
@@ -66,7 +61,7 @@ export class DisplayCharacterComponent implements OnInit {
 
     this.characters = [];
     this.characterService
-      .fetchCharactersFiltered(this.currentPage, name)
+      .fetchCharactersFiltered(this.currentPage, this.filterString)
       .subscribe((Characters) => {
         this.totalItems = Characters.info.count;
         Characters.results.forEach((character) => {

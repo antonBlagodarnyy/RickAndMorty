@@ -10,7 +10,7 @@ export class EpisodeService {
 
   constructor(private http: HttpClient) {}
 
-  fetchEpisodes(page: string) {
+  fetchEpisodes(page: number) {
     return this.http.get<{
       results: {
         id: number;
@@ -21,7 +21,27 @@ export class EpisodeService {
         url: string;
         created: string;
       }[];
-    }>('https://rickandmortyapi.com/api/episode/' + page);
+    }>('https://rickandmortyapi.com/api/episode/?page=' + page);
+  }
+
+  fetchEpisodesFiltered(page: number, name: string) {
+    return this.http.get<{
+      results: {
+        id: number;
+        name: string;
+        air_date: string;
+        episode: string;
+        characters: string[];
+        url: string;
+        created: string;
+      };
+      info: { count: number };
+    }>(
+      'https://rickandmortyapi.com/api/episode/?page=' +
+        page +
+        '&name=' +
+        name
+    );
   }
 
   fetchEpisode(id: number) {
@@ -30,7 +50,7 @@ export class EpisodeService {
       name: string;
       air_date: string;
       episode: string;
-      characters: Array<string>;
+      characters: string[];
       url: string;
       created: string;
     }>('https://rickandmortyapi.com/api/episode/' + id);
