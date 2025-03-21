@@ -5,7 +5,7 @@ import { DisplayEpisodeComponent } from './dashboard/display-episode/display-epi
 import { DisplayLocationComponent } from './dashboard/display-location/display-location.component';
 
 export const routes: Routes = [
-  { path: '', component: DashboardComponent },
+  { path: '', redirectTo: 'characters', pathMatch: 'full' },
   { path: 'characters', component: DisplayCharacterComponent },
   { path: 'episodes', component: DisplayEpisodeComponent },
   { path: 'locations', component: DisplayLocationComponent },
