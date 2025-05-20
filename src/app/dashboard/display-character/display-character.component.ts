@@ -1,9 +1,6 @@
 import {
   Component,
-  input,
-  OnChanges,
   OnInit,
-  SimpleChanges,
 } from '@angular/core';
 import { CharacterComponent } from '../../cards/character/character.component';
 import { CharacterService } from '../../services/character.service';

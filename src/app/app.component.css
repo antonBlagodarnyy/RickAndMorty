@@ -14,6 +14,10 @@ app-menu{
 }
 @media(max-width:1000px){
     .container{
+        overflow: auto;
         flex-direction: column;
+    }
+    ul{
+        padding:0vh;
     }
 }
