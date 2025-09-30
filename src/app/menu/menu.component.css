@@ -6,7 +6,7 @@ a{
     text-decoration: none;
 }
 li{
-    margin:5vh;
+    margin:2vh;
 }
 @media(max-width:1000px){
     ul{

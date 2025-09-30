@@ -11,6 +11,7 @@
 }
 app-menu{
     padding:1vh;
+    background-color:black;
 }
 @media(max-width:1000px){
     .container{
