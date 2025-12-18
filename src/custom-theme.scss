@@ -1,0 +1,75 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.dev/guide/theming
+@use "@angular/material" as mat;
+@use "theme-colors" as color;
+
+$theme: mat.define-theme(
+  (
+    color: (
+      theme-type: light,
+      primary: color.$primary-palette,
+      tertiary: color.$tertiary-palette,
+    ),
+    typography: (
+      plain-family: Montserrat,
+    ),
+    density: (
+      scale: 0,
+    ),
+  )
+);
+
+:root {
+  @include mat.theme($theme);
+  @include mat.all-component-themes($theme);
+  @include mat.typography-hierarchy($theme);
+  @include mat.system-level-colors($theme);
+}
+
+body {
+  margin: 0;
+}
+
+.banner {
+  padding: 2rem;
+  font-weight: 700 !important;
+  text-align: center;
+  color: var(--mat-sys-primary);
+  border-bottom: 2px solid var(--mat-sys-outline);
+}
+.container {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.searchbar {
+  margin: 0 1rem 0 1rem;
+}
+.container-page-nav {
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--mat-sys-background);
+}
+@media (max-width: 600px) {
+  .container-page-nav {
+    flex-direction: column;
+  }
+}
+.page-selector {
+  margin: 0 1rem 0 1rem;
+}
+
+
+.card-content-info-label {
+  font-weight: 600;
+  color: var(--mat-sys-secondary);
+}
+.card-content-info-value {
+  color: var(--mat-sys-primary);
+}
+.card-content-info-search {
+  display: flex;
+  align-items: center;
+}

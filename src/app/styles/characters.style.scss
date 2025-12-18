@@ -1,0 +1,37 @@
+.cards {
+  margin: 1rem;
+}
+.container-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+@media (min-width: 700px) {
+  mat-card-content {
+    display: flex !important;
+    padding: 0 !important;
+  }
+  mat-card-content > img {
+    border-radius: 0 0 0 10px;
+  }
+  .cards {
+    width: 45rem;
+  }
+  .card-content-bio {
+    width: 100%;
+    padding: 0 1rem 1rem 0;
+    margin-left: 1rem;
+  }
+}
+
+.card-content-bio {
+  
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card-content-bio-info {
+  display: flex;
+  flex-direction: column;
+}
